@@ -20,12 +20,14 @@ According to the Hohenberg-Kohn theorem, the wave function<img width="14" alt="i
 , energy<img width="15" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/4dc80cd7-2dc5-4786-8ef3-e7974c825d4a">
 , and various other quantum mechanical properties are all functions of the electron density \( n \). The electron density \( n \) can be expressed as:
 <img width="456" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/ed7e40c7-b948-40cd-b088-44c14c9f40c4">
+
 The total energy of the system can be expressed as:
 <img width="395" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/062a5b94-510b-4df5-8533-c3960aa3bb53">
 The system now has only three degrees of freedom, which facilitates analysis of larger systems.
 Next, the three components of total energy: kinetic energy, external potential energy, and interaction energy, are approximated and simplified.
 For the kinetic energy term: Neglecting the electron-electron interactions and assuming that electrons exist in individual single-electron orbitals, the kinetic energy term can be written as:
 <img width="375" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/6986a360-115d-4025-af2f-bc5c6caa172d">
+
 Where<img width="43" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/8e095ad3-08f4-4cac-a8b1-1fda88c4c869">
 represents the \( i \)th single-electron orbital, and \( T_s(n) \) is the sum of kinetic energies of all such non-interacting single-electron orbitals.
 
