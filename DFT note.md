@@ -1,4 +1,4 @@
-***What is Density Functional Theory
+**What is Density Functional Theory
 1. **Density**: Electron Density
 2. **Functional**: Energy as a function of Electron Density. By minimizing the energy functional, one can obtain the ground-state electron density and the corresponding energy of the system.
 3. **Electron Density**: A function of spatial coordinates.
