@@ -6,6 +6,7 @@
 5. **Density Functional Theory**
 A method for studying the electronic structure of multi-electron systems (describing the properties and behavior of atoms and molecules) through electron density. The electronic motion equations are no longer the Schrödinger equation (whose wave function represents the solution to a many-body problem that is difficult to solve in practical situations), but are instead solved in terms of the electron density, simplifying the computational process.
 
+
 ***二 Hohenberg-Kohn Theorems***
 1. **H-K First Theorem**: For a given electron density *\(n(r)\)*, there exists a unique corresponding ground-state external potential Vext(r)*\( V_{\text{ext}}(r) \)* and ground-state total energy *\( E \)*. Thus, the ground-state energy of the Schrödinger equation can be expressed in terms of the electron density.
 <img width="239" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/7eb08a3f-7883-4105-92f3-7576332c7070">
@@ -15,6 +16,7 @@ We can see that the degrees of freedom of the Schrödinger equation have decreas
 Uniqueness proof:まだproof
 
 2. **Hohenberg-Kohn Second Theorem**: The electron density that yields the lowest energy is the ground-state electron density. The second theorem can be regarded as a variational principle of the Hohenberg-Kohn theorem and can be derived through the variational principle of the Schrödinger equation.
+
 
 ***三  Density Functional Theory (DFT)***
 According to the Hohenberg-Kohn theorem, the wave function<img width="14" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/1ca3d589-fc6c-49e7-ac14-c05670cbe2cd">
@@ -51,6 +53,7 @@ The exact total energy of the system is referred to as the "exact total energy.
 <img width="328" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/49fa4c46-f855-4bf0-95ee-6ccd2c8789c2">
 
 The above constitutes the framework of Density Functional Theory (DFT).
+
 
 ***四 Exchange-Correlation Functional***
 
@@ -114,7 +117,9 @@ In practice, a small portion of Hartree-Fock energy is typically included.
 So, the general expression for hybrid functionals can be written as:
 <img width="304" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/6ff178ca-47c3-4dbd-9775-34b515ab5214">
 
+
 ***五 Comparison of Exchange-Correlation Functionals***
+
 Jacob’s Ladder explains the relationships between various approximation methods.
 
 <img width="148" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/5682da6f-abc1-4ad7-b0ea-76df48abf303">
