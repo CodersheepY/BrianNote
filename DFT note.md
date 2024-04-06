@@ -116,7 +116,9 @@ So, the general expression for hybrid functionals can be written as:
 
 ***五 Comparison of Exchange-Correlation Functionals***
 Jacob’s Ladder explains the relationships between various approximation methods.
+
 <img width="148" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/5682da6f-abc1-4ad7-b0ea-76df48abf303">
+
 The ladder ascends in complexity and performance.
 
 The table below presents the comparison of results obtained from various functionals for a particular system.
