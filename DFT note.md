@@ -3,7 +3,8 @@
 2. **Functional**: Energy as a function of Electron Density. By minimizing the energy functional, one can obtain the ground-state electron density and the corresponding energy of the system.
 3. **Electron Density**: A function of spatial coordinates.
 4. **Functional**: A function of a function.
-5. **Density Functional Theory**: A method for studying the electronic structure of multi-electron systems (describing the properties and behavior of atoms and molecules) through electron density. The electronic motion equations are no longer the Schrödinger equation (whose wave function represents the solution to a many-body problem that is difficult to solve in practical situations), but are instead solved in terms of the electron density, simplifying the computational process.
+5. **Density Functional Theory**
+A method for studying the electronic structure of multi-electron systems (describing the properties and behavior of atoms and molecules) through electron density. The electronic motion equations are no longer the Schrödinger equation (whose wave function represents the solution to a many-body problem that is difficult to solve in practical situations), but are instead solved in terms of the electron density, simplifying the computational process.
 
 ***二 Hohenberg-Kohn Theorems***
 1. **H-K First Theorem**: For a given electron density *\(n(r)\)*, there exists a unique corresponding ground-state external potential Vext(r)*\( V_{\text{ext}}(r) \)* and ground-state total energy *\( E \)*. Thus, the ground-state energy of the Schrödinger equation can be expressed in terms of the electron density.
@@ -50,3 +51,34 @@ The exact total energy of the system is referred to as the "exact total energy.
 <img width="328" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/49fa4c46-f855-4bf0-95ee-6ccd2c8789c2">
 
 The above constitutes the framework of Density Functional Theory (DFT).
+
+***四 Exchange-Correlation Functional***
+
+**The core idea of DFT**: to derive an easily computable but inaccurate result through approximation and then isolate all errors into a separate term for further analysis. Below are various approximation methods used to calculate the exchange-correlation energy.
+
+1. **Local Density Approximation, LDA**
+LDA is the simplest exchange-correlation functional and was proposed quite early—almost concurrently with the inception of DFT.
+Note: LDA itself is not the name of a functional but rather an approximation method; LDA encompasses many functionals.
+
+**The idea of LDA**: it can be approximated that the exchange-correlation energy at each point only depends on the local electron density at that point. Therefore, the general expression for LDA can be written as:
+<img width="167" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/fc8cd972-0ad4-4647-890a-de1f14201e25">
+
+The Exc part (x term) and the correlation part (c term) of Exc are discussed separately.
+<img width="184" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/93b626cf-4f56-4ed3-a7a0-3d72f4499504">
+
+1）For the exchange part of LDA, the homogeneous/uniform electron gas (HEG/UEG) approximation is commonly used. This means that the exchange energy at a point in space for an atom/molecule is equivalent to that of a uniform electron cloud with the same electron density at that point. The exchange energy of UEG may be provided by the Dirac functional.
+
+2）For the correlation part, different approximations are used for high-density and low-density UEG.
+・Under high-density conditions, the correlation energy at a point in space can be expressed as:
+<img width="209" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/9137cc33-e512-4d67-aaa0-33a533ab9898">
+
+In which <img width="16" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/0e7900c4-a494-4f93-8265-fd7ff6cf161b">
+ is the Wigner-Seitz radius, <img width="183" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/bd9fbeb6-1aee-418c-a6f5-6073bdc7cc5a">
+ ; <img width="35" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/e76fbb92-cd27-4f2e-9883-b15d69e9fd19">
+ is the radius of a sphere containing a charge of 1e in the Uniform Electron Gas (UEG). In the formula, <img width="214" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/bb9b5212-f444-4ad1-aed0-aaf7472503ab">
+. 
+
+・Under the low-density condition, the correlation at a point in space can be written as <img width="395" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/9fe646ef-4ad2-435a-9984-1c8c267dde6e">
+ 
+
+Apart from UEG, other functionals that perform well include Carpley-Alder (CA), Vosko-Wilk-Nusair (VWN), Perdew-Zunger (PZ), Perdew-Wang (PW), etc."
