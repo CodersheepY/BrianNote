@@ -6,7 +6,7 @@
 5. **Density Functional Theory**: A method for studying the electronic structure of multi-electron systems (describing the properties and behavior of atoms and molecules) through electron density. The electronic motion equations are no longer the Schrödinger equation (whose wave function represents the solution to a many-body problem that is difficult to solve in practical situations), but are instead solved in terms of the electron density, simplifying the computational process.
 
 ***二 Hohenberg-Kohn Theorems***
-1. **H-K First Theorem**: For a given electron density \(n(r)\), there exists a unique corresponding ground-state external potential \( V_{\text{ext}}(r) \) and ground-state total energy \( E \). Thus, the ground-state energy of the Schrödinger equation can be expressed in terms of the electron density.
+1. **H-K First Theorem**: For a given electron density *\(n(r)\)*, there exists a unique corresponding ground-state external potential *\( V_{\text{ext}}(r) \)* and ground-state total energy \( E \). Thus, the ground-state energy of the Schrödinger equation can be expressed in terms of the electron density.
 <img width="239" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/7eb08a3f-7883-4105-92f3-7576332c7070">
 
 We can see that the degrees of freedom of the Schrödinger equation have decreased from 3N to 3, greatly reducing the complexity of computations.
