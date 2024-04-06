@@ -144,4 +144,5 @@ It is not difficult to see that the performance of various functionals generally
 ***六 Significance and Challenges of Density Functional Theory***
 
 **Significance**: DFT has made it possible to compute the electronic structure of large systems and generally provides fairly accurate results in most cases.
+
 **Problem**：From my brief learning perspective, one issue with DFT is that many functionals feel somewhat ad hoc — many parameters in these functionals are only applicable to specific types of systems and may not perform well in others. There is no universally applicable method to optimize the performance of DFT across all systems.
