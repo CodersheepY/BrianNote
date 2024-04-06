@@ -35,6 +35,7 @@ External potential energy term: According to the Born-Oppenheimer approximation<
 
 Interaction term: For electron-electron interactions, a Thomas-Fermi model can be employed to derive an intuitively appealing approximation (Note: The proposal of the Thomas-Fermi model itself was not intuitive).
 <img width="290" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/e68d498c-3aeb-40a6-bb0e-3ca485f58932">
+
 It can be observed that the form of <img width="51" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/edfef052-30b8-421b-b6da-1d5f43bd7969">
 closely resembles the classical Coulomb interaction expression. 
 
