@@ -1,4 +1,5 @@
 ***一 What is Density Functional Theory***
+
 1. **Density**: Electron Density
 2. **Functional**: Energy as a function of Electron Density. By minimizing the energy functional, one can obtain the ground-state electron density and the corresponding energy of the system.
 3. **Electron Density**: A function of spatial coordinates.
@@ -9,6 +10,7 @@ A method for studying the electronic structure of multi-electron systems (descri
 
 
 ***二 Hohenberg-Kohn Theorems***
+
 1. **H-K First Theorem**: For a given electron density *\(n(r)\)*, there exists a unique corresponding ground-state external potential Vext(r)*\( V_{\text{ext}}(r) \)* and ground-state total energy *\( E \)*. Thus, the ground-state energy of the Schrödinger equation can be expressed in terms of the electron density.
 <img width="239" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/7eb08a3f-7883-4105-92f3-7576332c7070">
 
@@ -21,6 +23,7 @@ Uniqueness proof:まだproof
 
 
 ***三  Density Functional Theory (DFT)***
+
 According to the Hohenberg-Kohn theorem, the wave function<img width="14" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/1ca3d589-fc6c-49e7-ac14-c05670cbe2cd">
 , energy<img width="15" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/4dc80cd7-2dc5-4786-8ef3-e7974c825d4a">
 , and various other quantum mechanical properties are all functions of the electron density \( n \). The electron density \( n \) can be expressed as:
