@@ -127,7 +127,9 @@ Jacob’s Ladder explains the relationships between various approximation method
 The ladder ascends in complexity and performance.
 
 The table below presents the comparison of results obtained from various functionals for a particular system.
+
 <img width="267" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/f3f87301-5c79-4aea-9df4-2107e191ba15">
+
 It is not difficult to see that the performance of various functionals generally conforms to the Jacob's Ladder. Although in some cases, lower-order functionals may outperform some higher-order functionals, as long as suitable higher-order functionals are chosen based on the problem, Jacob's Ladder still holds true.
 
 ***六 Significance and Challenges of Density Functional Theory***
