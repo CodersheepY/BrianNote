@@ -1,1 +1,2 @@
-Brian NOTE
+#Brian NOTE
+About studying
