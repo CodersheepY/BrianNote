@@ -1,2 +1,2 @@
 #Brian NOTE
-About studying
+Regarding learning
