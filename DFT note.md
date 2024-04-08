@@ -11,7 +11,7 @@ A method for studying the electronic structure of multi-electron systems (descri
 
 ***二 Hohenberg-Kohn Theorems***
 
-1. **H-K First Theorem**: For a given electron density *\(n(r)\)*, there exists a unique corresponding ground-state external potential V<sub>ext</sub>(r) and ground-state total energy *\( E \)*. Thus, the ground-state energy of the Schrödinger equation can be expressed in terms of the electron density.
+1. **H-K First Theorem**: For a given electron density n(r), there exists a unique corresponding ground-state external potential V<sub>ext</sub>(r) and ground-state total energy  E . Thus, the ground-state energy of the Schrödinger equation can be expressed in terms of the electron density.
 <img width="239" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/7eb08a3f-7883-4105-92f3-7576332c7070">
 
 We can see that the degrees of freedom of the Schrödinger equation have decreased from 3N to 3, greatly reducing the complexity of computations.
@@ -26,7 +26,7 @@ Uniqueness proof:まだproof
 
 According to the Hohenberg-Kohn theorem, the wave function<img width="14" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/1ca3d589-fc6c-49e7-ac14-c05670cbe2cd">
 , energy<img width="15" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/4dc80cd7-2dc5-4786-8ef3-e7974c825d4a">
-, and various other quantum mechanical properties are all functions of the electron density \( n \). The electron density \( n \) can be expressed as:
+, and various other quantum mechanical properties are all functions of the electron density  n . The electron density  n  can be expressed as:
 <img width="456" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/ed7e40c7-b948-40cd-b088-44c14c9f40c4">
 
 The total energy of the system can be expressed as:
@@ -38,7 +38,7 @@ Next, the three components of total energy: kinetic energy, external potential e
 1. **kinetic energy term**: Neglecting the electron-electron interactions and assuming that electrons exist in individual single-electron orbitals, the kinetic energy term can be written as:
 <img width="375" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/6986a360-115d-4025-af2f-bc5c6caa172d">
 Where<img width="43" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/8e095ad3-08f4-4cac-a8b1-1fda88c4c869">
-represents the \( i \)th single-electron orbital, and \( T_s(n) \) is the sum of kinetic energies of all such non-interacting single-electron orbitals.
+represents the  i th single-electron orbital, and \( T_s(n) \) is the sum of kinetic energies of all such non-interacting single-electron orbitals.
 
 2. **External potential energy term**: According to the Born-Oppenheimer approximation<img width="175" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/64223201-c02f-488c-8959-9fa5c11e90ec">
 
