@@ -12,7 +12,7 @@ A method for studying the electronic structure of multi-electron systems (descri
 ***二 Hohenberg-Kohn Theorems***
 
 1. **H-K First Theorem**: For a given electron density n(r), there exists a unique corresponding ground-state external potential V<sub>ext</sub>(r) and ground-state total energy  E . Thus, the ground-state energy of the Schrödinger equation can be expressed in terms of the electron density.
-<img width="239" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/7eb08a3f-7883-4105-92f3-7576332c7070">
+＄<img width="239" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/7eb08a3f-7883-4105-92f3-7576332c7070">
 
 We can see that the degrees of freedom of the Schrödinger equation have decreased from 3N to 3, greatly reducing the complexity of computations.
 
