@@ -48,6 +48,7 @@ The provided code consists of two parts: the first part sets up and runs a molec
 ### Summary
 This code as a whole demonstrates how to use ASE to set up and run a molecular dynamics simulation of nitrogen molecule adsorption on a copper surface, and how to use Python's visualization tools to plot and analyze the trajectories of atoms during the simulation. This is very useful for studying surface adsorption dynamics, interactions between atoms, and the chemical properties of material surfaces. Such simulations help scientists better understand and predict the behavior of materials in real-world environments.
 
+### Part One: Setting Up and Running the Molecular Dynamics Simulation
 ```
 from ase import Atoms
 from ase.build import add_adsorbate, fcc111
@@ -58,6 +59,7 @@ from ase.md.velocitydistribution import MaxwellBoltzmannDistribution
 from ase.io import Trajectory
 import numpy as np
 from ase.units import kB
+
 
 # set up the Copper(Cu) surface and N2 Molecule
 h = 1.85
@@ -82,4 +84,45 @@ dyn = Langevin(slab, 1, temperature_K=300, friction=0.02)
 # Saving the Trajectory 轨迹
 traj = Trajectory('N2Cu_md.traj', 'w', slab)
 dyn.attach(traj.write, interval=10)
+```
+
+### Part Two: Visualizing the Simulation Results
+```
+from ase import Atoms
+from ase.build import add_adsorbate, fcc111
+from ase.calculators.emt import EMT
+from ase.constraints import FixAtoms
+from ase.md.langevin import Langevin
+from ase.md.velocitydistribution import MaxwellBoltzmannDistribution
+from ase.io import Trajectory
+import numpy as np
+from ase.units import kB
+
+
+# set up the Copper(Cu) surface and N2 Molecule
+h = 1.85
+d = 1.10
+slab = fcc111('Cu', size=(4, 4, 2), vacuum=10.0)
+
+# Create N2 molecules and add them to the copper surface
+molecule = Atoms('2N', positions=[(0., 0., 0.), (0., 0., d)])
+add_adsorbate(slab, molecule, h, 'ontop')
+
+# Applying Constraints and Calculator
+constraint = FixAtoms(mask=[a.symbol != 'N' for a in slab])
+slab.set_constraint(constraint)
+slab.calc = EMT()
+
+# Initializing the Temperature —5—
+MaxwellBoltzmannDistribution(slab, temperature_K=300 * kB)
+
+# Setting up and Initializing the Dynamics Simulator
+dyn = Langevin(slab, 1, temperature_K=300, friction=0.02)
+
+# Saving the Trajectory 轨迹
+traj = Trajectory('N2Cu_md.traj', 'w', slab)
+dyn.attach(traj.write, interval=10)
+
+# Running the Simulation
+dyn.run(5000)  # Runs longer for more trajectory data
 ```
