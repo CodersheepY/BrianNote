@@ -113,7 +113,7 @@ constraint = FixAtoms(mask=[a.symbol != 'N' for a in slab])
 slab.set_constraint(constraint)
 slab.calc = EMT()
 
-# Initializing the Temperature —5—
+# Initializing the Temperature
 MaxwellBoltzmannDistribution(slab, temperature_K=300 * kB)
 
 # Setting up and Initializing the Dynamics Simulator
