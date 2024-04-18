@@ -84,45 +84,33 @@ dyn = Langevin(slab, 1, temperature_K=300, friction=0.02)
 # Saving the Trajectory 轨迹
 traj = Trajectory('N2Cu_md.traj', 'w', slab)
 dyn.attach(traj.write, interval=10)
+
+# Running the Simulation
+dyn.run(5000)  # Runs longer for more trajectory data
 ```
 
 ### Part Two: Visualizing the Simulation Results
 ```
-from ase import Atoms
-from ase.build import add_adsorbate, fcc111
-from ase.calculators.emt import EMT
-from ase.constraints import FixAtoms
-from ase.md.langevin import Langevin
-from ase.md.velocitydistribution import MaxwellBoltzmannDistribution
-from ase.io import Trajectory
+from ase.io import read
+import matplotlib.pyplot as plt
 import numpy as np
-from ase.units import kB
+from mpl_toolkits.mplot3d import Axes3D
 
+# Visualizing the Simulation Results
 
-# set up the Copper(Cu) surface and N2 Molecule
-h = 1.85
-d = 1.10
-slab = fcc111('Cu', size=(4, 4, 2), vacuum=10.0)
+# Reading the Trajectory File
+traj = read('N2Cu_md.traj', index=':')
 
-# Create N2 molecules and add them to the copper surface
-molecule = Atoms('2N', positions=[(0., 0., 0.), (0., 0., d)])
-add_adsorbate(slab, molecule, h, 'ontop')
+# Setting up 3D Plotting
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
 
-# Applying Constraints and Calculator
-constraint = FixAtoms(mask=[a.symbol != 'N' for a in slab])
-slab.set_constraint(constraint)
-slab.calc = EMT()
+# Plotting Each Atom's Trajectory
+for atom in traj[0]:
+    positions = np.array([atoms.positions[atom.index] for atoms in traj])
+    ax.plot(positions[:, 0], positions[:, 1], positions[:, 2], label=atom.symbol)
 
-# Initializing the Temperature
-MaxwellBoltzmannDistribution(slab, temperature_K=300 * kB)
+ax.legend()
+plt.show()
 
-# Setting up and Initializing the Dynamics Simulator
-dyn = Langevin(slab, 1, temperature_K=300, friction=0.02)
-
-# Saving the Trajectory 轨迹
-traj = Trajectory('N2Cu_md.traj', 'w', slab)
-dyn.attach(traj.write, interval=10)
-
-# Running the Simulation
-dyn.run(5000)  # Runs longer for more trajectory data
 ```
