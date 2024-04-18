@@ -1,4 +1,4 @@
-The provided code consists of two parts: the first part sets up and runs a molecular dynamics (MD) simulation using the ASE (Atomic Simulation Environment) library, and the second part visualizes the results of this simulation. Here is a detailed line-by-line explanation:
+the first part sets up and runs a molecular dynamics (MD) simulation using the ASE (Atomic Simulation Environment) library, and the second part visualizes the results of this simulation. Here is a detailed line-by-line explanation:
 
 ### Part One: Setting Up and Running the Molecular Dynamics Simulation
 
