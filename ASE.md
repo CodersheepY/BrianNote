@@ -75,11 +75,13 @@ constraint = FixAtoms(mask=[a.symbol != 'N' for a in slab])
 slab.set_constraint(constraint)
 slab.calc = EMT()
 
-# Initializing the Temperature —5—
-MaxwellBoltzmannDistribution(slab, temperature_K=300 * kB)
+# Initializing the Temperature
+#MaxwellBoltzmannDistribution(slab, temperature_K=300 * kB)
+MaxwellBoltzmannDistribution(slab, temperature_K=300)
 
 # Setting up and Initializing the Dynamics Simulator
-dyn = Langevin(slab, 1, temperature_K=300, friction=0.02)
+#dyn = Langevin(slab, 1, temperature_K=300, friction=0.02)
+dyn = Langevin(slab, timestep=1.0*units.fs, temperature_K=300, friction=0.02/units.fs)
 
 # Saving the Trajectory 轨迹
 traj = Trajectory('N2Cu_md.traj', 'w', slab)
@@ -114,3 +116,12 @@ ax.legend()
 plt.show()
 
 ```
+
+### corrections
+In molecular dynamics simulations, handling units correctly is crucial for ensuring the physical accuracy and relevance of the simulation. The modification made ensures that the units for the timestep and friction coefficient are appropriately managed, which are key parameters in dynamical simulations. Here's a more detailed explanation:
+
+1. **Timestep**: The original code used a default unit of `1`, without specifying what this unit was. In ASE (Atomic Simulation Environment), the time unit is typically femtoseconds (fs). By specifying the `timestep` as `1.0 * units.fs`, it is clearly indicated that each step of the simulation corresponds to 1 femtosecond.
+
+2. **Friction coefficient**: The original code set the friction coefficient to `0.02` without a unit. The friction coefficient should be in per femtosecond, hence it should be expressed as `0.02 / units.fs`, indicating the friction per femtosecond. This helps the simulation to accurately perform thermodynamic coupling over the correct physical time scales.
+
+Through these modifications, the simulation can more accurately reflect real physical processes, avoiding potential errors or non-physical behaviors, such as molecules unexpectedly flying off the surface. Such precise control is particularly important when simulating interactions at the atomic and molecular levels.
