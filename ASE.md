@@ -125,3 +125,5 @@ In molecular dynamics simulations, handling units correctly is crucial for ensur
 2. **Friction coefficient**: The original code set the friction coefficient to `0.02` without a unit. The friction coefficient should be in per femtosecond, hence it should be expressed as `0.02 / units.fs`, indicating the friction per femtosecond. This helps the simulation to accurately perform thermodynamic coupling over the correct physical time scales.
 
 Through these modifications, the simulation can more accurately reflect real physical processes, avoiding potential errors or non-physical behaviors, such as molecules unexpectedly flying off the surface. Such precise control is particularly important when simulating interactions at the atomic and molecular levels.
+
+Linked:https://wiki.fysik.dtu.dk/ase/ase/md.html#module-ase.md.langevin
