@@ -116,6 +116,7 @@ ax.legend()
 plt.show()
 
 ```
+![N2Cu1](https://github.com/CodersheepY/BrianNote/assets/87512544/10957f8b-bfcd-4448-99c1-92cbff4d2042)
 
 ### corrections
 In molecular dynamics simulations, handling units correctly is crucial for ensuring the physical accuracy and relevance of the simulation. The modification made ensures that the units for the timestep and friction coefficient are appropriately managed, which are key parameters in dynamical simulations. Here's a more detailed explanation:
@@ -200,4 +201,3 @@ calc = OCPCalculator(
     forces_only=False       # Set this based on whether you want only forces or both forces and energy
 )
 ```
-![N2Cu1](https://github.com/CodersheepY/BrianNote/assets/87512544/10957f8b-bfcd-4448-99c1-92cbff4d2042)
