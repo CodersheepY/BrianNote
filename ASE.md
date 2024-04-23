@@ -1,4 +1,4 @@
-the first part sets up and runs a molecular dynamics (MD) simulation using the ASE (Atomic Simulation Environment) library, and the second part visualizes the results of this simulation. Here is a detailed line-by-line explanation:
+![N2Cu1](https://github.com/CodersheepY/BrianNote/assets/87512544/f4357156-345e-4ed5-bd0a-632845a484cd)the first part sets up and runs a molecular dynamics (MD) simulation using the ASE (Atomic Simulation Environment) library, and the second part visualizes the results of this simulation. Here is a detailed line-by-line explanation:
 
 ### Part One: Setting Up and Running the Molecular Dynamics Simulation
 
@@ -182,6 +182,7 @@ dyn.attach(traj.write, interval=10)
 dyn.run(5000)  # Runs longer for more trajectory data
 
 ```
+![N2Cu](https://github.com/CodersheepY/BrianNote/assets/87512544/f8e06823-c0d4-4bca-a09c-bb6bcd8f2d51)
 
 ### To modify the initialization of the OCPCalculator in your script to work with different S2EF model checkpoints, you should follow these steps based on the model requirements and the code structure you're working with
 
@@ -199,3 +200,4 @@ calc = OCPCalculator(
     forces_only=False       # Set this based on whether you want only forces or both forces and energy
 )
 ```
+![N2Cu1](https://github.com/CodersheepY/BrianNote/assets/87512544/10957f8b-bfcd-4448-99c1-92cbff4d2042)
