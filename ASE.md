@@ -190,7 +190,8 @@ dyn.run(5000)  # Runs longer for more trajectory data
 **Modify OCPCalculator Initialization**:
 from ocpmodels.common.relaxation.ase_utils import OCPCalculator
 
-# Example for initializing with a specific checkpoint and model configuration
+**Example for initializing with a specific checkpoint and model configuration**
+
 ```
 calc = OCPCalculator(
     checkpoint_path="path/to/checkpoint.pt",
