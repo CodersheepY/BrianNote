@@ -182,3 +182,19 @@ dyn.attach(traj.write, interval=10)
 dyn.run(5000)  # Runs longer for more trajectory data
 
 ```
+
+### To modify the initialization of the OCPCalculator in your script to work with different S2EF model checkpoints, you should follow these steps based on the model requirements and the code structure you're working with
+
+**Identify Model-Specific Parameters**: Each checkpoint may require different parameters. Review the documentation or source code of the OCPCalculator to understand which parameters are needed for each model type. This could include flags like energy_and_force, forces_only, etc.
+
+**Modify OCPCalculator Initialization**:
+from ocpmodels.common.relaxation.ase_utils import OCPCalculator
+
+# Example for initializing with a specific checkpoint and model configuration
+```
+calc = OCPCalculator(
+    checkpoint_path="path/to/checkpoint.pt",
+    energy_and_force=True,  # This flag depends on what outputs your model provides
+    forces_only=False       # Set this based on whether you want only forces or both forces and energy
+)
+```
