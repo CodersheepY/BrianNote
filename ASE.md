@@ -130,10 +130,10 @@ Linked:https://wiki.fysik.dtu.dk/ase/ase/md.html#module-ase.md.langevin
 
 ### using OCP calculator in the MD calculation and the output
 
-`
+```
 !wget -q https://dl.fbaipublicfiles.com/opencatalystproject/models/2021_08/s2ef/gemnet_t_direct_h512_all.pt
 checkpoint_path = "/Users/brian/ocp/gemnet_t_direct_h512_all.pt"
-`
+```
 
 ```
 from ase import Atoms
