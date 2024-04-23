@@ -127,3 +127,58 @@ In molecular dynamics simulations, handling units correctly is crucial for ensur
 Through these modifications, the simulation can more accurately reflect real physical processes, avoiding potential errors or non-physical behaviors, such as molecules unexpectedly flying off the surface. Such precise control is particularly important when simulating interactions at the atomic and molecular levels.
 
 Linked:https://wiki.fysik.dtu.dk/ase/ase/md.html#module-ase.md.langevin
+
+### using OCP calculator in the MD calculation and the output
+
+`
+!wget -q https://dl.fbaipublicfiles.com/opencatalystproject/models/2021_08/s2ef/gemnet_t_direct_h512_all.pt
+checkpoint_path = "/Users/brian/ocp/gemnet_t_direct_h512_all.pt"
+`
+
+```
+from ase import Atoms
+from ase.build import add_adsorbate, fcc111
+from ase.calculators.emt import EMT
+from ase.constraints import FixAtoms
+from ase.md.langevin import Langevin
+from ase.md.velocitydistribution import MaxwellBoltzmannDistribution
+from ase.io import Trajectory
+import numpy as np
+# from ase.units import kB
+from ase import units
+from ocpmodels.common.relaxation.ase_utils import OCPCalculator
+
+# Download and set up the model checkpoint
+checkpoint_path = "/Users/brian/ocp/gemnet_t_direct_h512_all.pt"
+
+# set up the Copper(Cu) surface and N2 Molecule
+h = 1.85
+d = 1.10
+slab = fcc111('Cu', size=(4, 4, 2), vacuum=10.0)
+
+# Create N2 molecules and add them to the copper surface
+molecule = Atoms('2N', positions=[(0., 0., 0.), (0., 0., d)])
+add_adsorbate(slab, molecule, h, 'ontop')
+
+# Applying Constraints and Calculator
+constraint = FixAtoms(mask=[a.symbol != 'N' for a in slab])
+slab.set_constraint(constraint)
+# slab.calc = EMT()
+slab.calc = OCPCalculator(checkpoint_path=checkpoint_path)
+
+# Initializing the Temperature 
+# MaxwellBoltzmannDistribution(slab, temperature_K=300 * kB)
+MaxwellBoltzmannDistribution(slab, temperature_K=300)
+
+# Setting up and Initializing the Dynamics Simulator
+# dyn = Langevin(slab, 1, temperature_K=300, friction=0.02)
+dyn = Langevin(slab, timestep=1.0*units.fs, temperature_K=300, friction=0.02/units.fs)
+
+# Saving the Trajectory 
+traj = Trajectory('N2Cu_md.traj', 'w', slab)
+dyn.attach(traj.write, interval=10)
+
+# Running the Simulation
+dyn.run(5000)  # Runs longer for more trajectory data
+
+```
