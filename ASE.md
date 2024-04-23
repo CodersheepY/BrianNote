@@ -1,4 +1,4 @@
-![N2Cu1](https://github.com/CodersheepY/BrianNote/assets/87512544/f4357156-345e-4ed5-bd0a-632845a484cd)the first part sets up and runs a molecular dynamics (MD) simulation using the ASE (Atomic Simulation Environment) library, and the second part visualizes the results of this simulation. Here is a detailed line-by-line explanation:
+the first part sets up and runs a molecular dynamics (MD) simulation using the ASE (Atomic Simulation Environment) library, and the second part visualizes the results of this simulation. Here is a detailed line-by-line explanation:
 
 ### Part One: Setting Up and Running the Molecular Dynamics Simulation
 
