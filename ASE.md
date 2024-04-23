@@ -118,6 +118,7 @@ plt.show()
 ```
 ![N2Cu1](https://github.com/CodersheepY/BrianNote/assets/87512544/10957f8b-bfcd-4448-99c1-92cbff4d2042)
 
+  
 ### corrections
 In molecular dynamics simulations, handling units correctly is crucial for ensuring the physical accuracy and relevance of the simulation. The modification made ensures that the units for the timestep and friction coefficient are appropriately managed, which are key parameters in dynamical simulations. Here's a more detailed explanation:
 
@@ -185,6 +186,7 @@ dyn.run(5000)  # Runs longer for more trajectory data
 ```
 ![N2Cu](https://github.com/CodersheepY/BrianNote/assets/87512544/f8e06823-c0d4-4bca-a09c-bb6bcd8f2d51)
 
+   
 ### To modify the initialization of the OCPCalculator in your script to work with different S2EF model checkpoints, you should follow these steps based on the model requirements and the code structure you're working with
 
 **Identify Model-Specific Parameters**: Each checkpoint may require different parameters. Review the documentation or source code of the OCPCalculator to understand which parameters are needed for each model type. This could include flags like energy_and_force, forces_only, etc.
