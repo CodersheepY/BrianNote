@@ -56,13 +56,9 @@ $$
 
 - Smaller system size (4) results in a less extensive simulation setup.
 - Shorter trajectory length (1 ps) means fewer atomic movements are captured, potentially leading to a higher diffusion coefficient.
+<img width="1182" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/f7821408-9855-4649-a9de-3fbfbae0d4cf">
+<img width="1259" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/9258a77c-6005-4d35-8f00-292aad69af40">
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4eee811c-5c1c-46ce-8817-feda201c4d6b/44c814d8-0a08-4bb3-8a4e-ff7223f81827/Untitled.png)
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4eee811c-5c1c-46ce-8817-feda201c4d6b/84af0963-11e6-426a-b257-bcad4e3797d5/Untitled.png)
-
-![Untitled](Analysis%20of%20Molecular%20Dynamics%20Simulations%20with%20Di%20d019434cb2764f67b6e84ec353c04247/Untitled.png)
-
-![Untitled](Analysis%20of%20Molecular%20Dynamics%20Simulations%20with%20Di%20d019434cb2764f67b6e84ec353c04247/Untitled%201.png)
 
 ### Simulation 2: Size = 6, Trajectory Length = 2
 
@@ -79,12 +75,9 @@ $$
 
 - Larger system size (6) leads to a more extensive simulation setup.
 - Longer trajectory length (2 ps) ensures more atomic movements are captured, potentially providing a more accurate diffusion coefficient.
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4eee811c-5c1c-46ce-8817-feda201c4d6b/ba8523e1-a6e9-4109-ae37-9de3e3766048/Untitled.png)
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4eee811c-5c1c-46ce-8817-feda201c4d6b/3528e818-0559-4c4b-9dd0-18999b658c36/Untitled.png)
+<img width="1048" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/74743c9c-e3d9-4a0a-9aa0-3d9904fe21ee">
+<img width="1261" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/6b2973fb-a088-4af1-802d-e1eee8117b39">
 
-![Untitled](Analysis%20of%20Molecular%20Dynamics%20Simulations%20with%20Di%20d019434cb2764f67b6e84ec353c04247/Untitled%202.png)
-
-![Untitled](Analysis%20of%20Molecular%20Dynamics%20Simulations%20with%20Di%20d019434cb2764f67b6e84ec353c04247/Untitled%203.png)
 
 ### Analysis
 
