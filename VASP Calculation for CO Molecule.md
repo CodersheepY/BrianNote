@@ -27,3 +27,7 @@
 - The VASP calculations effectively determine the optimal position of the O atom in a CO molecule, with the minimum energy observed at 1.1 Å.
 - This position is in close agreement with the experimental bond length, validating the accuracy of the computational approach.
 - Such calculations are essential for understanding molecular structures and can be extended to more complex systems for predicting stable configurations and properties.
+
+<img width="613" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/c6168803-b009-493c-8f03-a9c397f74ccb">
+
+<img width="689" alt="image" src="https://github.com/CodersheepY/BrianNote/assets/87512544/3954d1d5-7026-4a50-b85a-4e9279e17623">
