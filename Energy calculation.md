@@ -1,10 +1,10 @@
-# Task: Comparing Smearing Algorithms for CO Molecule
+## Task1: Comparing Smearing Algorithms for CO Molecule
 
-## Objective
+### Objective
 
 The goal of this task is to compare the energy changes in a CO molecule using two different smearing algorithms specified by the `ISMEAR` parameter in VASP. Specifically, we will compare the results for `ISMEAR = 0` (default) and `ISMEAR = 1` (Methfessel-Paxton smearing).
 
-## Method
+### Method
 
 1. **Modifying INCAR File**:
    The INCAR file was modified to include the smearing algorithm by setting `ISMEAR` to `0` and `1` respectively.
@@ -26,9 +26,9 @@ The goal of this task is to compare the energy changes in a CO molecule using tw
    grep "energy(sigma->0)" OUTCAR
    ```
 
-## Results
+### Results
 
-### ISMEAR = 0 (Default)
+#### ISMEAR = 0 (Default)
 
 For `ISMEAR = 0`, the energy values for different O positions are:
 
@@ -53,7 +53,7 @@ For `ISMEAR = 0`, the energy values for different O positions are:
   ```
 <img width="784" alt="Pasted Graphic 5" src="https://github.com/CodersheepY/BrianNote/assets/87512544/814af292-c587-4ed8-9d6c-af879851691f">
 
-### ISMEAR = 1 (Methfessel-Paxton Smearing)
+#### ISMEAR = 1 (Methfessel-Paxton Smearing)
 
 For `ISMEAR = 1`, the energy values for different O positions are:
 
@@ -65,16 +65,16 @@ For `ISMEAR = 1`, the energy values for different O positions are:
   ```
 <img width="587" alt="-14 67970525" src="https://github.com/CodersheepY/BrianNote/assets/87512544/6d6b7488-0ee5-445f-a149-c0bc398c488d">
 
-## Analysis
+### Analysis
 
-### Energy Comparison
+#### Energy Comparison
 
 The energy values obtained from the calculations indicate that the energy without entropy and energy with sigma are slightly different for the two smearing algorithms:
 
 - For `ISMEAR = 0`, the minimum energy is around `-14.67969861` eV.
 - For `ISMEAR = 1`, the minimum energy is around `-14.67197471` eV.
 
-### Interpretation
+#### Interpretation
 
 - **ISMEAR = 0**:
   - This setting is generally used for molecules and small systems as it uses the Gaussian smearing method, which is suitable for such calculations.
@@ -84,13 +84,13 @@ The energy values obtained from the calculations indicate that the energy withou
   - This setting uses the Methfessel-Paxton scheme, which is better suited for metals and large systems with many electrons.
   - The energy values obtained with this setting show minor discrepancies and are not recommended for small systems like molecules.
 
-## Conclusion
+### Conclusion
 
 For the CO molecule, using the default smearing algorithm (`ISMEAR = 0`) provides more reliable and accurate energy values compared to using the Methfessel-Paxton smearing (`ISMEAR = 1`). The slight differences in energy values highlight the importance of choosing the appropriate smearing method for different types of systems. For molecular systems, the default setting (`ISMEAR = 0`) is preferred.
 
 ---
 
-## Task: Effect of O Position on Energy in CO Molecule
+## Task2: Effect of O Position on Energy in CO Molecule
 
 ### Objective
 
