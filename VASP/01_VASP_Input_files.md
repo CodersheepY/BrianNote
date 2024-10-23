@@ -67,3 +67,75 @@ Gamma     # Gamma-centered grid
 1 1 1     # 1*1*1 grid
 0 0 0     # S1 S2 S3 (typically kept at 0 0 0)
 ```
+
+#### Explanation:
+
+- **Gamma-centered** is usually recommended for molecules, atoms, and hexagonal systems.
+- **M-centered** (Monkhorst-Pack) is another grid option but can mismatch with hexagonal symmetry.
+
+### 2.3 POSCAR
+
+#### Purpose:
+
+Contains structural information of the model.
+
+#### Sample POSCAR File (for O atom in a box):
+
+```
+O atom in a box
+1.0  # Universal scaling factor
+8.0 0.0 0.0  # Lattice vector a(1)
+0.0 8.0 0.0  # Lattice vector a(2)
+0.0 0.0 8.0  # Lattice vector a(3)
+O           # Element (Oxygen, not zero)
+1           # Number of atoms
+Cartesian   # Coordinate system (use Direct for fractional)
+0 0 0       # Atomic position in Cartesian coordinates
+```
+
+#### Explanation:
+
+- The coordinate system can be Cartesian or fractional. For Cartesian, use "Cartesian" or "C"; for fractional, use "Direct" or "D".
+- Coordinates of atoms are placed after the coordinate system.
+
+### 2.4 POTCAR
+
+#### Purpose:
+
+Contains basis set information for atoms in the system, including core radius, cutoff energies, and electron configurations.
+
+#### Example Output of POTCAR:
+
+```
+PAW_PBE Fe 06Sep2000
+8.00000000000000000
+parameters from PSCTR are:
+VRHFIN =Fe: d7 s1
+LEXCH = PE
+EATOM = 594.4687 eV, 43.6922 Ry
+...
+```
+
+#### Key Parameters:
+
+- **VRHFIN**: Electron configuration of the element.
+- **LEXCH**: Specifies GGA-PBE functional.
+- **TITEL**: Element and potential creation date.
+- **ZVAL**: Number of valence electrons (important for Bader charge analysis).
+- **ENMAX**: Default cutoff energy, related to ENCUT in INCAR.
+
+#### Common Linux Commands to Check POTCAR:
+
+- View the element in POTCAR: `grep TIT POTCAR`
+- View the cutoff energy: `grep ENMAX POTCAR`
+- View the valence electron number: `grep ZVAL POTCAR`
+
+---
+
+## References:
+
+- [VASP Documentation - File Structure](http://cms.mpi.univie.ac.at/vasp/guide/node50.html)
+- [INCAR Documentation](http://cms.mpi.univie.ac.at/vasp/guide/node91.html)
+- [KPOINTS Documentation](https://cms.mpi.univie.ac.at/vasp/vasp/Automatic_k_mesh_generation.html)
+- [POSCAR Documentation](http://cms.mpi.univie.ac.at/vasp/guide/node59.html)
+- [POTCAR Documentation](http://cms.mpi.univie.ac.at/vasp/vasp/Recommended_PAW_potentials_DFT_calculations_using_vasp_5_2.html)
