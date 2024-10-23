@@ -1,23 +1,23 @@
 # Preparation of Basic VASP Input Files
 
-**Required files:**
+## Required Files:
 
-- `INCAR` (tells VASP what to calculate and how to calculate)
-- `KPOINTS` (contains K-point information for the calculation)
-- `POSCAR` (describes the structure of the model in xyz coordinates)
-- `POTCAR` (describes the basis sets of atoms in the system)
+- **INCAR** (Instructs VASP what to calculate and how to calculate)
+- **KPOINTS** (Contains K-point information)
+- **POSCAR** (Describes the structure of the model, i.e., the positions of atoms in xyz coordinates)
+- **POTCAR** (Contains the pseudopotentials for the atoms in the system, including information about atomic nuclei and electrons)
 
 ---
 
 ## 1. Key Concepts
 
-- **Rubbish in, Rubbish out!**: The program only computes; it's up to the user to ensure the inputs are correct. Errors usually fall into three categories:
+- **Rubbish in, Rubbish out!**: The program only performs calculations; it is up to the user to ensure the inputs are correct. There are three main types of errors:
 
-  - **Model errors:** Errors in modeling (usually in `POSCAR`)
-  - **Calculation parameters:** Errors in `INCAR`, `KPOINTS`, or `POTCAR`
-  - **Task submission script or command errors**
+  - **Model error**: Mistakes in modeling, mainly related to `POSCAR`.
+  - **Calculation parameters**: Mistakes in `INCAR`, `KPOINTS`, or `POTCAR`.
+  - **Submission script or command errors**.
 
-- **Check parameters repeatedly** from the official VASP site.
+- **Check parameters repeatedly** on the official VASP website.
 
 ---
 
@@ -27,59 +27,74 @@
 
 #### Purpose:
 
-Tells VASP what to calculate and how to calculate it.
+Instructs VASP what to calculate and how to calculate it.
 
 #### Preparation Principle:
 
-Keep it as simple as possible. Do not include what you don't understand.
+Keep it as simple as possible. Do not include what you don’t understand.
 
-#### Sample INCAR File:
+#### Example of INCAR File:
 
 ```ini
-SYSTEM = O atom # The element is oxygen, not the digit zero
-ISMEAR = 0      # Use 0 for molecules or atoms, not the letter O
-SIGMA = 0.01    # For molecules or atoms, use 0.01
+SYSTEM = O atom # This refers to Oxygen (O), not the digit zero
+ISMEAR = 0      # This is zero, not O (Oxygen); use 0 for molecules or atoms
+SIGMA = 0.01    # Use 0.01 for molecules or atoms
 ```
 
-#### Explanation:
+#### Detailed Explanation:
 
-- **SYSTEM**: Description of the task (objective, system)
+- **SYSTEM**: Describes the task of the calculation (purpose, system).
 - **ISMEAR**:
   - Different values correspond to different smearing methods.
-  - Use `0` for molecules or atoms.
+  - For molecules or atoms, use 0.
 - **SIGMA**:
-  - Value related to ISMEAR.
-  - For metals: ISMEAR = 1 or 0, non-metals: ISMEAR = 0. Use `SIGMA = 0.01` for non-metals or atoms.
-  - Check: Use `grep 'entropy T' OUTCAR` to find entropy. Ensure that `T*S` divided by the number of atoms is less than 1-2 meV. Adjust `SIGMA` accordingly.
+  - Related to ISMEAR.
+  - When ISMEAR = -5, SIGMA can be ignored.
+  - For metals: ISMEAR = 1 or 0, for non-metals: ISMEAR = 0, generally use SIGMA = 0.01.
+  - For gases or atomic systems (molecule/atom in a box), use ISMEAR = 0 and SIGMA = 0.01.
+
+#### Testing Criterion:
+
+Check that the average `entropy T*S` per atom in the `OUTCAR` file is less than 1-2 meV using the command:
+
+```bash
+grep 'entropy T' OUTCAR
+```
+
+Divide the energy by the number of atoms and compare with 0.001 eV. If it’s smaller, SIGMA is fine; if larger, reduce SIGMA and test again.
+
+---
 
 ### 2.2 KPOINTS
 
 #### Purpose:
 
-Determines the precision of the calculation, which affects the time needed. High precision requires longer time, lower precision requires shorter time.
+Determines the precision of the calculation and influences the required calculation time. Higher precision means longer calculation time, while lower precision shortens the time.
 
-#### Sample KPOINTS File:
+#### Example of KPOINTS File:
 
 ```
-K-POINTS  # First line can be anything but must not be empty
-0         # Use automatic generation
+K-POINTS  # First line can contain anything but must not be empty
+0         # Zero, auto-generate the grid
 Gamma     # Gamma-centered grid
-1 1 1     # 1*1*1 grid
-0 0 0     # S1 S2 S3 (typically kept at 0 0 0)
+1 1 1     # 1x1x1 grid
+0 0 0     # S1 S2 S3 (usually kept at 0 0 0)
 ```
 
-#### Explanation:
+#### Detailed Explanation:
 
-- **Gamma-centered** is usually recommended for molecules, atoms, and hexagonal systems.
-- **M-centered** (Monkhorst-Pack) is another grid option but can mismatch with hexagonal symmetry.
+- **Gamma-centered** grids are used in most cases.
+- **Monkhorst-Pack (M-centered)** grids shift the grid by 1/(2N) in each direction, which can lead to mismatches between the grid and the crystal symmetry, especially for hexagonal systems. Therefore, use Gamma-centered grids for hexagonal structures.
+
+---
 
 ### 2.3 POSCAR
 
 #### Purpose:
 
-Contains structural information of the model.
+Contains the structural information of the model for calculation.
 
-#### Sample POSCAR File (for O atom in a box):
+#### Example of POSCAR File (for an O atom in a box):
 
 ```
 O atom in a box
@@ -87,24 +102,31 @@ O atom in a box
 8.0 0.0 0.0  # Lattice vector a(1)
 0.0 8.0 0.0  # Lattice vector a(2)
 0.0 0.0 8.0  # Lattice vector a(3)
-O           # Element (Oxygen, not zero)
+O           # Oxygen element (O)
 1           # Number of atoms
-Cartesian   # Coordinate system (use Direct for fractional)
-0 0 0       # Atomic position in Cartesian coordinates
+Cartesian   # Cartesian coordinate system
+0 0 0       # Atom position in Cartesian coordinates
 ```
 
-#### Explanation:
+#### Detailed Explanation:
 
-- The coordinate system can be Cartesian or fractional. For Cartesian, use "Cartesian" or "C"; for fractional, use "Direct" or "D".
-- Coordinates of atoms are placed after the coordinate system.
+- **First line**: Description of the system (can be anything).
+- **Second line**: Scaling factor, usually set to 1.0.
+- **Third to Fifth lines**: Lattice vectors of the system.
+- **Sixth line**: Element name, in this case, Oxygen (O).
+- **Seventh line**: Number of atoms, here it’s 1 atom.
+- **Eighth line**: Specifies the coordinate system. "Cartesian" means the positions are in Cartesian coordinates; "Direct" means fractional coordinates.
+- **Ninth line**: Atom positions. In this example, the O atom is placed at the origin (0.0, 0.0, 0.0).
+
+---
 
 ### 2.4 POTCAR
 
 #### Purpose:
 
-Contains basis set information for atoms in the system, including core radius, cutoff energies, and electron configurations.
+Contains pseudopotential information about each atom in the system, including the atomic nucleus and electron configuration.
 
-#### Example Output of POTCAR:
+#### Example of POTCAR:
 
 ```
 PAW_PBE Fe 06Sep2000
@@ -118,23 +140,36 @@ EATOM = 594.4687 eV, 43.6922 Ry
 
 #### Key Parameters:
 
-- **VRHFIN**: Electron configuration of the element.
-- **LEXCH**: Specifies GGA-PBE functional.
-- **TITEL**: Element and potential creation date.
-- **ZVAL**: Number of valence electrons (important for Bader charge analysis).
-- **ENMAX**: Default cutoff energy, related to ENCUT in INCAR.
+- **VRHFIN**: Electron configuration of the atom.
+- **LEXCH**: Specifies the exchange-correlation functional, here GGA-PBE.
+- **TITEL**: Describes the element and the date of the pseudopotential.
+- **ZVAL**: Number of valence electrons, critical for Bader charge analysis.
+- **ENMAX**: Default cutoff energy, related to the `ENCUT` parameter in `INCAR`.
 
-#### Common Linux Commands to Check POTCAR:
+#### Linux Commands for Checking POTCAR:
 
-- View the element in POTCAR: `grep TIT POTCAR`
-- View the cutoff energy: `grep ENMAX POTCAR`
-- View the valence electron number: `grep ZVAL POTCAR`
+- View the element in POTCAR:
+
+  ```bash
+  grep TIT POTCAR
+  ```
+
+- View the cutoff energy:
+
+  ```bash
+  grep ENMAX POTCAR
+  ```
+
+- View the number of valence electrons:
+  ```bash
+  grep ZVAL POTCAR
+  ```
 
 ---
 
 ## References:
 
-- [VASP Documentation - File Structure](http://cms.mpi.univie.ac.at/vasp/guide/node50.html)
+- [VASP File Structure](http://cms.mpi.univie.ac.at/vasp/guide/node50.html)
 - [INCAR Documentation](http://cms.mpi.univie.ac.at/vasp/guide/node91.html)
 - [KPOINTS Documentation](https://cms.mpi.univie.ac.at/vasp/vasp/Automatic_k_mesh_generation.html)
 - [POSCAR Documentation](http://cms.mpi.univie.ac.at/vasp/guide/node59.html)
