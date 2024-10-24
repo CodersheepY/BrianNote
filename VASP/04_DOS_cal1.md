@@ -97,3 +97,18 @@ For metallic systems, you can also use:
 If SIGMA is too large, the calculated energy may be incorrect. The smaller SIGMA is, the more accurate the calculation, but the longer it takes. A SIGMA value of 0.01 is already quite small, so there's no need to make it even smaller. For metallic systems, using the MP method (ISMEAR=1..N), SIGMA = 0.10 should suffice. The official recommendation is SIGMA = 0.20.
 
 For more information, refer to the [VASP Guide on Smearing Methods](http://cms.mpi.univie.ac.at/vasp/guide/node124.html).
+
+After determining KPOINTS, it's a good idea to test different values of SIGMA. The principle is as follows: the value of SIGMA should be as large as possible while keeping the average entropy energy **T\*S** per atom below **1 meV**. This ensures both accuracy and faster convergence.
+
+### 5.Summary
+
+- Settings for **KPOINTS** and **NEDOS**.
+- Use **ISMEAR = -5** for DOS calculations.
+- If the number of K points is too small, or if there are hardware limitations, use:
+  - **ISMEAR = 0** for all systems.
+  - For metallic systems, **ISMEAR = 1..N**, and the recommended SIGMA is **0.20**. However, values between **0.01 and 0.10** are also safe.
+- Test the value of **SIGMA** to ensure the entropy energy **T\*S** per atom is less than **1 meV**.
+- For non-DOS calculations:
+  - For metallic systems, do not use **ISMEAR = -5**. Use **ISMEAR = 1** instead.
+  - For semiconductors and insulators, **ISMEAR must not be greater than 0**.
+  - **ISMEAR = 0** is a safe choice for all systems, but the value of **SIGMA** should be tested.
