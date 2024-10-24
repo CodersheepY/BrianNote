@@ -109,4 +109,69 @@ When obtaining **Esurf**, it is crucial to check the following:
 1. Has the single-point calculation converged?
 2. Has the first ionic step converged?
 
-If neither has converged, the surface energy calculation will be incorrect. Both **σunrel** and **Erel** are closely tied to this value.
+## Surface Energy Calculation in Hand-On-Session-III
+
+### 1. Explanation of Dividing by 2 in the Calculation
+
+When performing a single-point calculation, there are two surfaces included. This is because the bulk is split into two halves. Let’s first examine the slab model:
+
+**Problem**: There are two surfaces in the structure shown in the figure because our slab model is periodic in the z-direction. Even though we fix the bottom two layers of atoms to simulate the bulk, they still count as surfaces. See the illustration below:
+
+So, why isn't **Erel** divided by 2?
+
+This is because only one surface is optimized.
+
+If both surfaces need to be optimized, **Erel** should be divided by 2.
+
+If we want to optimize both the top and bottom surfaces, this leads to two types of slab models: symmetric and asymmetric models. The previous models were all asymmetric slab models. Symmetric slab models are as shown below:
+
+In this model, the three middle layers of atoms are fixed to simulate the bulk, while the top and bottom three layers of atoms are relaxed to simulate the surfaces. In this case, when calculating surface energy, the value of **Erel** should be divided by 2. The simplified formula for the calculation is:
+
+\[
+\sigma = \frac{E*{\text{rel_surf}} - N*{\text{atoms}}E\_{\text{bulk}}}{2A}
+\]
+
+Where:
+
+- **Erel_surf** is the energy of the optimized symmetric slab model.
+- **A** is the surface area of a single surface.
+- **Natoms** is the number of atoms in the slab model.
+- **Ebulk** is the bulk energy per atom.
+
+**Note**: Compare this formula with the one at the bottom of page 96 in the reference book, and carefully read the explanation of the terms in the formula on page 97.
+
+---
+
+### 2. Differences Between Symmetric and Asymmetric Slab Models
+
+1. **Symmetric slab** models have more atoms and are longer in the z-direction, requiring more vacuum layers (top and bottom), which inevitably leads to larger computational costs. Especially for those with limited computational resources, this model may not be ideal.
+
+2. **Asymmetric models**, due to their asymmetry, will introduce a dipole moment during the calculation. This dipole moment is caused by the model itself and is not the same as the molecular dipole moment we commonly refer to. Particularly when calculating surface adsorption or reactions, the interaction between the dipole moments of the slabs can affect the results. However, this is not a major issue since most computational software can control the calculation parameters to minimize or eliminate this effect.
+
+3. **In VASP**, this issue can be addressed by setting:
+   - `LDIPOL = .TRUE.` (to enable dipole correction),
+   - `IDIPOL = 1, 2, or 3`, where 1, 2, and 3 correspond to corrections along the x, y, and z directions, respectively. Setting `IDIPOL = 4` applies corrections in all directions.
+
+---
+
+### 3. Parameters Influencing Surface Energy Calculation
+
+From the formula, it is clear that the energy of the slab and the energy of the bulk are the main factors:
+
+1. **Slab Energy**:
+
+   - **Number of layers in the slab**: Refer to the results in the reference book.
+   - **Surface size of the slab**: Generally, a p(1x1) surface is sufficient. However, you can also compare the difference between p(1x1) and p(2x2). It is important to note that when changing the surface size, the **KPOINTS** should also be adjusted accordingly to ensure the results are comparable.
+   - **Vacuum layer thickness**: Consider testing different thicknesses.
+
+2. **Bulk Energy**: We’ve already discussed how to calculate bulk energy in the previous section. Some students asked: How many atoms should be included in the bulk model for the calculation?
+
+   - **Personal opinion**: The calculation can be done using either a unit cell or a primitive cell. Of course, you can also expand the unit cell. However, when comparing the energy per atom in models of different sizes, make sure to pay attention to the selection of **KPOINTS**. If the **KPOINT** density is inconsistent, even small differences in the energy per atom may occur, which can be confusing. You can test this if you're interested.
+
+---
+
+### 4. Reference
+
+For further reading on surface energy, see _Theoretical Surface Science: A Microscopic Perspective_ by Axel Groß. The book introduces surface energy concepts on page 68. The author’s group homepage can be found at:
+
+[Institute of Theoretical Chemistry, University of Ulm](https://www.uni-ulm.de/en/nawi/institute-of-theoretical-chemistry/).
