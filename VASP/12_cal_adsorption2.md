@@ -81,3 +81,13 @@ Surface coverage affects adsorption energy due to several factors, including:
 
 For more detailed insights, refer to this ScienceDirect article.
 https://www.sciencedirect.com/science/article/abs/pii/S0360056402450134
+
+Here’s the summary in markdown format:
+
+Summary
+
+When surface coverage is high, the adsorption energy is small or even positive, indicating that species on the surface are unstable and need extra force to stay in place.
+
+The surface area is limited, and when O atoms adsorb on the p-(1x1) surface, it’s too crowded for them to be comfortable. However, when the surface expands to p-(2x2), there’s noticeably more space. Although the O atoms still aren’t completely happy, they are significantly less uncomfortable compared to being on the (1x1) surface. This is evident from the adsorption energy, which decreases by about 1 eV.
+
+From another perspective, this can be seen as a battle among O atoms for limited surface resources.
