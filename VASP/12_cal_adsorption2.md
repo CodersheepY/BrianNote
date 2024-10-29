@@ -1,37 +1,83 @@
 Adsorption Energy Calculation
 
-    1.	Definition of Adsorption Energy
+1. Definition of Adsorption Energy
 
-The adsorption energy is the energy difference between the initial and final states:
-• Initial state: Pure slab and an O₂ molecule or O atom.
-• Final state: Slab with adsorbed O atom. 2. Optimization of O₂ Molecule Calculation
-When optimizing the O₂ molecule calculation, keep in mind:
-• Obtain the bond length of the O₂ molecule from the database as the initial value.
-• Set the following parameters:
-• ISPIN = 2
-• ISMEAR = 0; SIGMA = 0.05
-• IBRION = 2; POTIM = 0.1
-• Use only the Gamma point for calculations. 3. Optimization of O Atom Calculation
-The calculation details are similar to those for the O₂ molecule, but note:
-• Since the O atom remains a single O atom regardless of optimization, a single-point calculation is more appropriate.
-• The box size should be 13x14x15 Å³ or 13.1x13.2x13.3 Å³. Avoid cubic boxes like 13x13x13. 4. Bulk Structure Optimization
-To optimize the bulk structure, perform a lattice sweep and fitting or optimize directly with ISIF = 3. Set a high ENCUT, ideally around 700 eV. 5. Slab Optimization
-Use selective dynamics and ensure the correct relationship between the T and F flags in the coordinates. 6. Setting Up the O Adsorption Model
-To create a reasonable initial model for O adsorption:
-• Use experimental values if available.
-• If not, perform a low-precision initial calculation to estimate values. 7. Identifying Calculation Completion
-Learn to determine when calculations have finished. Different task types will have unique completion signatures.
+The adsorption energy is calculated as the energy difference between the initial and final states:
+
+    •	Initial state: A clean slab and an O₂ molecule or an O atom.
+    •	Final state: A slab with adsorbed O atom.
+
+2. Optimization of O₂ Molecule
+
+When optimizing the O₂ molecule, consider the following:
+
+    •	Bond Length: Retrieve the O₂ bond length from the database to use as the initial value.
+    •	Calculation Settings:
+    •	ISPIN = 2
+    •	ISMEAR = 0 and SIGMA = 0.05
+    •	IBRION = 2 and POTIM = 0.1
+    •	k-point: Use only the Gamma point.
+
+3. Optimization of O Atom
+
+For the O atom calculation, follow the same details as above with a few differences:
+
+    •	Single-Point Calculation: Since an O atom remains a single atom after optimization, perform a single-point calculation rather than a full optimization.
+    •	Box Size: Use box dimensions of either 13x14x15 Å³ or 13.1x13.2x13.3 Å³. Avoid cubic boxes like 13x13x13.
+
+4. Bulk Structure Optimization
+
+To optimize the bulk structure, use:
+
+    •	Methods: Lattice sweep and fitting or direct optimization with ISIF = 3.
+    •	High Cutoff Energy: Set ENCUT to a high value, around 700 eV.
+
+5. Slab Optimization
+
+For slab optimization:
+
+    •	Selective Dynamics: Use selective dynamics and ensure correct T and F flags for the coordinates.
+
+6. Setting Up the O Adsorption Model
+
+To construct a reasonable initial model for O adsorption:
+
+    •	Experimental Values: Use experimental data for initial parameters if available.
+    •	Estimation: If no experimental data is available, perform a low-precision preliminary calculation to estimate values.
+
+7. Recognizing Calculation Completion
+
+Learn to recognize the completion of different types of calculations. Each task type has unique characteristics indicating its completion.
 
 Why is the Adsorption Energy of O on the p-(1x1)-Cu(111) Surface Positive?
 
-Example Analogy:
+Analogy
 
-Imagine a subway car with empty seats:
+Imagine entering a subway car:
 
-    •	Empty car: You can pick any seat you want.
-    •	Some people are seated: Choices are fewer, but you still have options.
-    •	Crowded car: Even getting out is a challenge; finding a seat is out of the question.
+    1.	Empty Car: You have your pick of seats.
+    2.	Partially Filled Car: Your options are more limited, but you can still find a seat.
+    3.	Crowded Car: Even getting out becomes challenging, let alone finding a seat.
 
-Returning to the adsorption scenario, imagine replicating the O adsorption structure on the xy-plane. The surface is densely packed with O atoms! In such a cramped space, if you were an O atom, would you want to squeeze in? Would you choose an empty car or a packed one?
+Applying the Analogy
 
-As an O atom, I’d definitely prefer the empty car. So, if adsorption must occur on this crowded surface, some external force is needed — like a strong JR station attendant pushing passengers onto the train. This push is analogous to the adsorption energy for the O atom. A positive adsorption energy indicates that additional force is required to adsorb it onto the surface. The more crowded the surface, the larger the positive value.
+Now, consider the adsorption structure for O atoms replicated in the xy-plane:
+
+    •	High Surface Density of O Atoms: The surface is tightly packed with O atoms. In this crowded environment, if you were an O atom, would you want to squeeze in? You’d likely prefer the “empty car” over the crowded one.
+
+As an O atom, I wouldn’t want to adsorb onto such a crowded surface. However, if adsorption must occur, an external force is required to make it happen — similar to a strong JR station attendant pushing passengers onto a packed train. This push represents the adsorption energy for the O atom.
+
+Interpretation of Positive Adsorption Energy
+
+A positive adsorption energy means additional force is required for the O atom to adsorb onto the surface. The more crowded the surface, the higher the positive value of the adsorption energy.
+
+Factors Influencing Adsorption Energy on Surface Coverage
+
+Surface coverage affects adsorption energy due to several factors, including:
+
+    •	Electron Distribution Shifts in the Bulk: Redistribution of electrons within the bulk material can influence adsorption strength.
+    •	Bond Formation with Adsorbate Species: The nature of bonding between the adsorbate and the substrate.
+    •	Repulsion and Attraction Among Adsorbate Species: Interactions between adsorbed atoms or molecules can either enhance or weaken adsorption based on their distance and mutual orientation.
+
+For more detailed insights, refer to this ScienceDirect article.
+https://www.sciencedirect.com/science/article/abs/pii/S0360056402450134
