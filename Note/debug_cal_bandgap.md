@@ -10,6 +10,8 @@ Error during band gap calculation: Failed to calculate total energy: Looking for
                         LDA:  $VASP_PP_PATH/potpaw/
                         PBE:  $VASP_PP_PATH/potpaw_PBE/
                         PW91: $VASP_PP_PATH/potpaw_GGA/
+
+                        No pseudopotential for Ba!
 ```
 
 ### Cause of the Error
