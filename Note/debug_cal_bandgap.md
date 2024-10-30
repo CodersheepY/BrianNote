@@ -35,7 +35,7 @@ If you don’t have permission to create a symlink in the original pseudopotenti
 
 2. **Set `VASP_PP_PATH` to Point to User Directory**
 
-   In your script or `.bashrc` file, set the environment variable so `VASP_PP_PATH` points to the user directory:
+   In the script or `.bashrc` file, set the environment variable so `VASP_PP_PATH` points to the user directory:
 
    ```bash
    export VASP_PP_PATH="$HOME/vasp_potentials"
