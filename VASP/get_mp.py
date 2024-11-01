@@ -7,4 +7,3 @@ data_structure = mpr.get_structure_by_material_id("mp-1009018")
 
 w = CifWriter(data_structure)
 w.write_file("Cu.cif")
-
