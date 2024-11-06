@@ -96,7 +96,7 @@ MaxwellBoltzmannDistribution(slab, temperature_K=300)
 #dyn = Langevin(slab, 1, temperature_K=300, friction=0.02)
 dyn = Langevin(slab, timestep=1.0*units.fs, temperature_K=300, friction=0.02/units.fs)
 
-# Saving the Trajectory 轨迹
+# Saving the Trajectory
 traj = Trajectory('N2Cu_md.traj', 'w', slab)
 dyn.attach(traj.write, interval=10)
 
